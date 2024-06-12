@@ -1,12 +1,15 @@
-const {model,Schema} = require("mongoose")
+const { model, Schema } = require("mongoose");
 
-const blogs = new Schema({
-    "banner":{type:String, required:true},
-    "projectType":{type:String, required:true},
-    "title":{type:String, required:true},
-    "description":{type:String, required:true},
-},{
-    timestamps:true
-})
+const blogs = new Schema(
+  {
+    banner: { type: String, required: true },
+    type: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = model("blogs",blogs)
+module.exports = model("blogs", blogs);
