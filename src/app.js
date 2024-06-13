@@ -45,7 +45,6 @@ app.use("/api/social/", social);
 app.use("/api/upload/", fileRouter);
 app.use(express.static("uploads"));
 
-//connecting Database
 mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.MONGO_URL)
