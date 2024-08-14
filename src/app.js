@@ -24,7 +24,11 @@ dotenv.config();
 app.use(parser.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: [
+      "https://ravikushwaha.me",
+      "http://localhost:3000",
+      "http://localhost:3001",
+    ],
   })
 );
 app.use(parser.urlencoded({ extended: false }));
