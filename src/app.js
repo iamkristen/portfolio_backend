@@ -17,8 +17,6 @@ const skills = require("./router/skills_router");
 const social = require("./router/social_links_router");
 const fileRouter = require("./router/file_router");
 const cors = require("cors");
-const router = express.Router();
-const serverless = require("serverless-http");
 //dot environment configuration
 dotenv.config();
 
@@ -68,6 +66,4 @@ process.on("unhandledRejection", (err) => {
   console.log(`An error occurred: ${err.message}`);
   server.close(() => process.exit(1));
 });
-
-app.use("/src/app.js", router);
-module.exports.handler = serverless(app);
+module.exports = app;
