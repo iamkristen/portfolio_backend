@@ -12,8 +12,8 @@ async function addAboutMe(req, res) {
 
     res.json({ success: true, data: savedData });
   } catch (error) {
-    console.error("AddAboutMe Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    // console.error("AddAboutMe Error:", error);
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
@@ -31,8 +31,8 @@ async function updateAboutMe(req, res) {
 
     res.json({ success: true, data: updatedData });
   } catch (error) {
-    console.error("UpdateAboutMe Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    // console.error("UpdateAboutMe Error:", error);
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
@@ -47,8 +47,8 @@ async function deleteAboutMe(req, res) {
 
     res.json({ success: true, data: "Page deleted successfully." });
   } catch (error) {
-    console.error("DeleteAboutMe Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    // console.error("DeleteAboutMe Error:", error);
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
@@ -62,8 +62,8 @@ async function getAboutMe(req, res) {
 
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("GetAboutMe Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    // console.error("GetAboutMe Error:", error);
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 module.exports = {
