@@ -19,8 +19,7 @@ async function getAllSkills(req, res) {
     const allSkills = await SkillsModel.find();
     res.json({ success: true, data: allSkills });
   } catch (error) {
-    console.error("Get All Skills Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
@@ -36,8 +35,7 @@ async function getSkillById(req, res) {
 
     res.json({ success: true, data: skill });
   } catch (error) {
-    console.error("Get Skill by ID Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
@@ -56,8 +54,7 @@ async function updateSkillById(req, res) {
 
     res.json({ success: true, data: updatedSkill });
   } catch (error) {
-    console.error("Update Skill by ID Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
@@ -73,8 +70,7 @@ async function deleteSkillById(req, res) {
 
     res.json({ success: true, data: "Skill deleted successfully." });
   } catch (error) {
-    console.error("Delete Skill by ID Error:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    res.status(500).json({ success: false, error: error.message });
   }
 }
 
