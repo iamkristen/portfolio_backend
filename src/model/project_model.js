@@ -1,10 +1,15 @@
-const {model,Schema} = require("mongoose")
+const { model, Schema } = require("mongoose");
 
-const project = new Schema({
-    "banner":{type:String, required:true},
-    "projectType":{type:String, required:true},
-    "title":{type:String, required:true},
-    "description":{type:String, required:true},
-})
+const project = new Schema(
+  {
+    banner: { type: String, required: true },
+    projectType: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = model("project",project)
+module.exports = model("project", project);
