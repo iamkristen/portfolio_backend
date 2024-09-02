@@ -17,7 +17,7 @@ async function createBlog(req, res) {
 // Read all blogs
 async function getAllBlogs(req, res) {
   try {
-    const allBlogs = await blogsModel.find();
+    const allBlogs = await blogsModel.find().sort({ createdAt: -1 });
     res.json({ success: true, data: allBlogs });
   } catch (error) {
     // console.error("Get All Blogs Error:", error);

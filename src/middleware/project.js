@@ -16,7 +16,7 @@ async function createProject(req, res) {
 // Read all projects
 async function getAllProjects(req, res) {
   try {
-    const allProjects = await ProjectModel.find();
+    const allProjects = await ProjectModel.find().sort({ createdAt: -1 });
     res.json({ success: true, data: allProjects });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

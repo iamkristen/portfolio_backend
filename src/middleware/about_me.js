@@ -5,7 +5,7 @@ async function addAboutMe(req, res) {
     const data = req.body;
     const aboutMe = new aboutMeModel(data);
     const savedData = await aboutMe.save();
-    // console.log(savedData)
+    console.log(savedData);
     if (!savedData) {
       return res.json({ success: false, error: "Failed to save data." });
     }
