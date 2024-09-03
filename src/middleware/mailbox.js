@@ -16,7 +16,7 @@ async function createMailboxEntry(req, res) {
 // Read all mailbox entries
 async function getAllMailboxEntries(req, res) {
   try {
-    const allEntries = await MailboxModel.find();
+    const allEntries = await MailboxModel.find().sort({ createdAt: -1 });
     res.json({ success: true, data: allEntries });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
