@@ -25,8 +25,8 @@ app.use(parser.json());
 app.use(
   cors({
     origin: [
-      "https://portdashboard.netlify.app",
-      "https://ravikushwaha.me",
+      "https://ravikushwaha.netlify.app",
+      "https://ravikushwaha.co.uk",
       "http://localhost:3000",
       "http://localhost:3001",
     ],
