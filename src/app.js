@@ -26,7 +26,9 @@ app.use(
   cors({
     origin: [
       "https://ravikushwaha.netlify.app",
-      "https://ravikushwaha.co.uk",
+      "https://portdashboard.netlify.app/",
+      "https://www.ravikushwaha.co.uk",
+      "https://www.dashboard.ravikushwaha.co.uk",
       "http://localhost:3000",
       "http://localhost:3001",
     ],
