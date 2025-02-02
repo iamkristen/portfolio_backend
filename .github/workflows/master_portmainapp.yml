@@ -1,3 +1,11 @@
+name: Build and Deploy Node.js App to Azure Web App - portmainapp
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -5,26 +13,41 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Log Build Start Time
+        run: echo "Build started at $(date)"
+
+      - name: Set Up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Cache Node.js Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      - name: Build and test
+      - name: Install Dependencies
+        run: npm ci --prefer-offline
+
+      - name: Build and Test
         run: |
           npm run build --if-present
           npm run test --if-present
 
-      - name: Zip artifact
+      - name: Log Build End Time
+        run: echo "Build finished at $(date)"
+
+      - name: Zip Artifact for Deployment
         run: zip -r release.zip . -x "node_modules/*" ".git/*" "test/*"
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
@@ -38,7 +61,10 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download artifact
+      - name: Log Deployment Start Time
+        run: echo "Deployment started at $(date)"
+
+      - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
@@ -50,3 +76,6 @@ jobs:
           slot-name: 'Production'
           package: release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7548FE9C9FF642DDB4ADC088EDE90AC5 }}
+
+      - name: Log Deployment End Time
+        run: echo "Deployment finished at $(date)"
