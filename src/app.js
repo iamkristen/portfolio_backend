@@ -29,6 +29,8 @@ app.use(
       "https://portdashboard.netlify.app",
       "https://www.ravikushwaha.co.uk",
       "https://ravikushwaha.co.uk",
+      "https://www.ravikushwaha.me",
+      "https://ravikushwaha.me",
       "https://www.dashboard.ravikushwaha.co.uk",
       "https://dashboard.ravikushwaha.co.uk",
       "http://localhost:3000",
