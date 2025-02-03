@@ -66,13 +66,13 @@ router.post("/single", verify, upload.single("image"), async (req, res) => {
     const uploadedFile = req.file;
 
     if (!uploadedFile) {
-      console.log("File not found");
+      // console.log("File not found");
       res.json({ success: false, error: "File not found." });
       return;
     }
 
     const downloadURL = await uploadFileToFirebase(uploadedFile);
-    console.log("Download URL:", downloadURL);
+    // console.log("Download URL:", downloadURL);
     res.json({ success: true, data: downloadURL });
   } catch (error) {
     console.error("Upload Error:", error);
