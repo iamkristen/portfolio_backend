@@ -51,10 +51,7 @@ mongoose
   .then(() => console.log("Database connect"))
   .catch((err) => console.log("Something Went Wrong"));
 
-//get request for test
-app.get("/", (req, res) => {
-  res.send("App is running.....");
-});
+
 
 //starting server
 const server = app.listen(process.env.PORT, () => {
