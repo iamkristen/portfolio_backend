@@ -16,6 +16,7 @@ const project = require("./router/project_router");
 const skills = require("./router/skills_router");
 const social = require("./router/social_links_router");
 const fileRouter = require("./router/file_router");
+const certificate = require("./router/certificate_router");
 const cors = require("cors");
 //dot environment configuration
 dotenv.config();
@@ -54,6 +55,7 @@ app.use("/api/projects/", project);
 app.use("/api/skills/", skills);
 app.use("/api/social/", social);
 app.use("/api/upload/", fileRouter);
+app.use("/api/certificate/", certificate);
 app.use(express.static("uploads"));
 
 mongoose.set("strictQuery", true);
