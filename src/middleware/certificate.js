@@ -3,11 +3,15 @@ const Certificate = require('../model/certificate_model');
 
 const CertificateController = {
     getAllCertificates: async (req, res) => {
-        const certificates = await Certificate.find().sort({ createdAt: -1 });;
-        if (!certificates) {
-            return res.status(404).json({success:false,  data: 'No certificates found'});
+        try {
+            const certificates = await Certificate.find().sort({ dateIssued: -1 });
+            if (!certificates || certificates.length === 0) {
+                return res.status(404).json({ success: false, data: "No certificates found" });
+            }
+            res.json({ success: true, data: certificates });
+        } catch (error) {
+            res.status(500).json({ success: false, error: "Server error" });
         }
-        res.json({success:true, data: certificates});
     },
 
     getCertificateById: async (req, res) =>  {
